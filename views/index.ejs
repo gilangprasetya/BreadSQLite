@@ -14,7 +14,7 @@
             <input type="hidden" name="page" value="1">
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxID" name="checkboxID" <%= query.checkboxID ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxID" name="checkboxID" <%=query.checkboxID ? "checked" : "" %>>
                     <label for="id">ID</label>
                 </div>
                 <div class="col-80">
@@ -23,7 +23,8 @@
             </div>
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxString" name="checkboxString" <%= query.checkboxString ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxString" name="checkboxString" <%=query.checkboxString ? "checked"
+                        : "" %>>
                     <label for="string">String</label>
                 </div>
                 <div class="col-80">
@@ -32,7 +33,8 @@
             </div>
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxInteger" name="checkboxInteger" <%= query.checkboxInteger ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxInteger" name="checkboxInteger" <%=query.checkboxInteger
+                        ? "checked" : "" %>>
                     <label for="integer">Integer</label>
                 </div>
                 <div class="col-80">
@@ -41,36 +43,42 @@
             </div>
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxFloat" name="checkboxFloat" <%= query.checkboxFloat ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxFloat" name="checkboxFloat" <%=query.checkboxFloat ? "checked"
+                        : "" %>>
                     <label for="float">Float</label>
                 </div>
                 <div class="col-80">
-                    <input type="number" step="any" id="float" name="float" placeholder="Float" value="<%= query.float %>">
+                    <input type="number" step="any" id="float" name="float" placeholder="Float"
+                        value="<%= query.float %>">
                 </div>
             </div>
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxDate" name="checkboxDate" <%= query.checkboxDate ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxDate" name="checkboxDate" <%=query.checkboxDate ? "checked" : ""
+                        %>>
                     <label for="date">Date</label>
                 </div>
                 <div class="col-80">
                     <div class="tanggal">
-                        <input placeholder="Start Date" name="startDate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" style="width: 20%;" value="<%= query.startDate %>"/>
+                        <input placeholder="Start Date" name="startDate" type="text" onfocus="(this.type='date')"
+                            onblur="(this.type='text')" id="date" style="width: 20%;" value="<%= query.startDate %>" />
                         <div class="dtTo">to</div>
-                        <input placeholder="End Date" name="endDate" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" style="width: 20%;" value="<%= query.endDate %>"/>
+                        <input placeholder="End Date" name="endDate" type="text" onfocus="(this.type='date')"
+                            onblur="(this.type='text')" id="date" style="width: 20%;" value="<%= query.endDate %>" />
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-20">
-                    <input type="checkbox" id="checkboxBoolean" name="checkboxBoolean" <%= query.checkboxBoolean ? "checked" : "" %>>
+                    <input type="checkbox" id="checkboxBoolean" name="checkboxBoolean" <%=query.checkboxBoolean
+                        ? "checked" : "" %>>
                     <label for="Boolean">Boolean</label>
                 </div>
                 <div class="col-80">
                     <select name="boolean" id="boolean">
                         <option value="">Choose the boolean...</option>
-                        <option value="true" <% if (query.boolean == "true") { %>selected<% } %>>True</option>
-                        <option value="false" <% if (query.boolean == "false") { %>selected<% } %>>False</option>
+                        <option value="true" <% if (query.boolean=="true" ) { %>selected<% } %>>True</option>
+                        <option value="false" <% if (query.boolean=="false" ) { %>selected<% } %>>False</option>
                     </select>
                 </div>
             </div>
@@ -121,13 +129,19 @@
             <a class="search" href="/add">Add</a>
         </div>
         <div class="pagination">
-            <a href="#">&laquo;</a>
-            <% for(let i=1; i <=pages; i++) { %>
+            <% if (page > 1) { %>
+                <a href="<%= url.replace(`page=${page}`, `page=${page-1}`) %>">&laquo;</a>
+            <% } %>
+            
+            <% for (let i = 1; i <= pages; i++) { %>
                 <a class="<%= page == i ? 'active' : '' %>" href="<%= url.replace(`page=${page}`, `page=${i}`) %>">
                     <%= i %>
                 </a>
-                <% } %>
-                    <a href="#">&raquo;</a>
+            <% } %>
+            
+            <% if (page < pages) { %>
+                <a href="<%= url.replace(`page=${parseInt(page)}`, `page=${parseInt(page)+1}`) %>">&raquo;</a>
+            <% } %>
         </div>
     </div>
 </body>
