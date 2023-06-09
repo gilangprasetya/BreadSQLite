@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BREAD</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <h1>Edit Data</h1>
+    <form action="" method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-20">
+                    <label for="id">ID</label>
+                </div>
+                <div class="col-80">
+                    <input style="background-color: rgb(234, 235, 236);" type="text" id="id" name="id" value="<%= item.id %>" disabled>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="string">String</label>
+                </div>
+                <div class="col-80">
+                    <input type="text" id="string" name="string" value="<%= item.breadStr %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="integer">Integer</label>
+                </div>
+                <div class="col-80">
+                    <input type="number" id="integer" name="integer" value="<%= item.breadInt %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="float">Float</label>
+                </div>
+                <div class="col-80">
+                    <input type="number" step="any" id="float" name="float" value="<%= item.breadFloat %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="date">Date</label>
+                </div>
+                <div class="col-80">
+                    <input type="date" id="date" name="date" value="<%= item.tanggal %>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-20">
+                    <label for="Boolean">Boolean</label>
+                </div>
+                <div class="col-80">
+                    <select name="boolean" id="boolean">
+                        <option value="true" <% if (item.breadBoolean == "true") { %>selected<% } %>>True</option>
+                        <option value="false" <% if (item.breadBoolean == "false") { %>selected<% } %>>False</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <button class="search" type="submit">Update</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
